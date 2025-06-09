@@ -17,27 +17,26 @@ const divide = function (val1, val2) {
 };
 
 const operate = function (val1, operand, val2) {
+  val1 = Number(val1);
+  val2 = Number(val2);
+
   switch (operand) {
     case "+":
-      add(val1, val2);
-      break;
+      return add(val1, val2);
     case "-":
-      subtract(val1, val2);
-      break;
+      return subtract(val1, val2);
     case "*":
-      multiply(val1, val2);
-      break;
+      return multiply(val1, val2);
     case "/":
-      divide(val1, val2);
-      break;
+      return divide(val1, val2);
     default:
       console.log("handle error");
   }
 };
 
-let val1 = "";
-let val2;
-let result;
+let newVal = "";
+let oldVal = "";
+let operand = "";
 
 const input = document.getElementById("in-value");
 const btn7 = document.getElementById("7");
@@ -55,65 +54,68 @@ const btnSubtract = document.getElementById("subtract");
 const btnClear = document.getElementById("clear");
 const btn0 = document.getElementById("0");
 const btnDecimal = document.getElementById(".");
-const btnPlus = document.getElementById("+");
+const btnAdd = document.getElementById("+");
 const btnEquals = document.querySelector(".equals-btn");
 
 btn7.addEventListener("click", () => {
-  val1 += String(7);
-  input.value = val1;
+  newVal += String(7);
+  input.value = newVal;
 });
 btn8.addEventListener("click", () => {
-  val1 += String(8);
-  input.value = val1;
+  newVal += String(8);
+  input.value = newVal;
 });
 btn9.addEventListener("click", () => {
-  val1 += String(9);
-  input.value = val1;
+  newVal += String(9);
+  input.value = newVal;
 });
 btn4.addEventListener("click", () => {
-  val1 += String(4);
-  input.value = val1;
+  newVal += String(4);
+  input.value = newVal;
 });
 btn5.addEventListener("click", () => {
-  val1 += String(5);
-  input.value = val1;
+  newVal += String(5);
+  input.value = newVal;
 });
 btn6.addEventListener("click", () => {
-  val1 += String(6);
-  input.value = val1;
+  newVal += String(6);
+  input.value = newVal;
 });
 btn1.addEventListener("click", () => {
-  val1 += String(1);
-  input.value = val1;
+  newVal += String(1);
+  input.value = newVal;
 });
 btn2.addEventListener("click", () => {
-  val1 += String(2);
-  input.value = val1;
+  newVal += String(2);
+  input.value = newVal;
 });
 btn3.addEventListener("click", () => {
-  val1 += String(3);
-  input.value = val1;
+  newVal += String(3);
+  input.value = newVal;
 });
 btn0.addEventListener("click", () => {
   //keep from starting with 0
-  if (val1 != 0) {
-    val1 += String(0);
-    input.value = val1;
+  if (newVal != 0) {
+    newVal += String(0);
+    input.value = newVal;
   }
 });
 btnDecimal.addEventListener("click", () => {
-  if (val1 == "") {
-    val1 += "0.";
-    input.value = val1;
-  } else if (!val1.includes(".")) {
-    val1 += ".";
-    input.value = val1;
+  if (newVal == "") {
+    newVal += "0.";
+    input.value = newVal;
+  } else if (!newVal.includes(".")) {
+    newVal += ".";
+    input.value = newVal;
   }
 });
 
-btnDivide.addEventListener("click", () => {
-  val2 = val1;
-  val1 = "";
-  input.value = val1;
-  console.log(val2, val1);
-});
+btnDivide.addEventListener("click", () => {});
+
+btnAdd.addEventListener("click", () => {});
+
+btnMultiply.addEventListener("click", () => {});
+
+btnSubtract.addEventListener("click", () => {});
+
+btnEquals.addEventListener("click", () => {});
