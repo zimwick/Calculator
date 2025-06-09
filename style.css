@@ -3,3 +3,31 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+main {
+  margin: 0 auto;
+}
+
+.text-box {
+  text-align: right;
+}
+
+.calculator {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  flex: 0 0 25%;
+}
+
+.equals-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
