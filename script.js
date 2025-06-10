@@ -157,6 +157,18 @@ btnSubtract.addEventListener("click", () => {
 });
 
 input.addEventListener("input", () => {
+  let usedDecimal = false;
+  let result = "";
+
+  for (const char of input.value) {
+    if (char >= "0" && char <= "9") {
+      result += char;
+    } else if (char === "." && !usedDecimal) {
+      result += ".";
+      usedDecimal = true;
+    }
+  }
+  input.value = result;
   inputVal = input.value;
 });
 
