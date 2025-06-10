@@ -1,19 +1,23 @@
 "use strict";
 
 const add = function (val1, val2) {
-  return val1 + val2;
+  const result = val1 + val2;
+  return parseFloat(result.toFixed(6));
 };
 
 const subtract = function (val1, val2) {
-  return val1 - val2;
+  const result = val1 - val2;
+  return parseFloat(result.toFixed(6));
 };
 
 const multiply = function (val1, val2) {
-  return val1 * val2;
+  const result = val1 * val2;
+  return parseFloat(result.toFixed(6));
 };
 
 const divide = function (val1, val2) {
-  return val1 / val2;
+  const result = val1 / val2;
+  return parseFloat(result.toFixed(6));
 };
 
 const operate = function (val1, operand, val2) {
@@ -158,7 +162,8 @@ input.addEventListener("input", () => {
 
 btnEquals.addEventListener("click", () => {
   if (oldVal && inputVal && operand) {
-    oldVal = operate(oldVal, operand, inputVal);
-    input.value = oldVal;
+    inputVal = operate(oldVal, operand, inputVal);
+    input.value = inputVal;
+    oldVal = "";
   }
 });
