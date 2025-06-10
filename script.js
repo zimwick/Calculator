@@ -61,6 +61,7 @@ const handleChain = function (newOperand) {
 let inputVal = "";
 let oldVal = "";
 let operand = "";
+let usedDecimal = false;
 
 const input = document.getElementById("in-value");
 const btn7 = document.getElementById("7");
@@ -79,7 +80,7 @@ const btnClear = document.getElementById("clear");
 const btn0 = document.getElementById("0");
 const btnDecimal = document.getElementById(".");
 const btnAdd = document.getElementById("+");
-const btnEquals = document.querySelector(".equals-btn");
+const btnEquals = document.querySelector(".equals");
 
 btn7.addEventListener("click", () => {
   inputVal += String(7);
@@ -157,7 +158,7 @@ btnSubtract.addEventListener("click", () => {
 });
 
 input.addEventListener("input", () => {
-  let usedDecimal = false;
+  usedDecimal = false;
   let result = "";
 
   for (const char of input.value) {
@@ -170,6 +171,10 @@ input.addEventListener("input", () => {
   }
   input.value = result;
   inputVal = input.value;
+});
+
+input.addEventListener("paste", (e) => {
+  e.preventDefault();
 });
 
 btnEquals.addEventListener("click", () => {
