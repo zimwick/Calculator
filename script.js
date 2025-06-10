@@ -48,6 +48,7 @@ const handleChain = function (newOperand) {
   }
 };
 
+//setting global state
 let inputVal = "";
 let oldVal = "";
 let operand = "";
@@ -123,6 +124,12 @@ btnDecimal.addEventListener("click", () => {
     input.value = inputVal;
   }
 });
+btnClear.addEventListener("click", () => {
+  inputVal = "";
+  oldVal = "";
+  operand = "";
+  input.value = "";
+});
 
 btnDivide.addEventListener("click", () => {
   handleChain("/");
@@ -141,5 +148,6 @@ btnSubtract.addEventListener("click", () => {
 });
 
 btnEquals.addEventListener("click", () => {
-  input.value = operate(oldVal, operand, inputVal);
+  oldVal = operate(oldVal, operand, inputVal);
+  input.value = oldVal;
 });
