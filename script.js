@@ -36,15 +36,20 @@ const operate = function (val1, operand, val2) {
 
 const handleChain = function (newOperand) {
   if (oldVal && inputVal) {
+    // Perform calculation when two operands exist
     oldVal = operate(oldVal, operand, inputVal);
     input.value = oldVal;
     inputVal = "";
     operand = newOperand;
-  } else {
+  } else if (!oldVal) {
+    // First operation: store inputVal as oldVal
     oldVal = inputVal;
     inputVal = "";
     operand = newOperand;
     input.value = "";
+  } else {
+    // No new input yet: replace the operand (e.g., + becomes -)
+    operand = newOperand;
   }
 };
 
@@ -147,7 +152,13 @@ btnSubtract.addEventListener("click", () => {
   handleChain("-");
 });
 
+input.addEventListener("input", () => {
+  inputVal = input.value;
+});
+
 btnEquals.addEventListener("click", () => {
-  oldVal = operate(oldVal, operand, inputVal);
-  input.value = oldVal;
+  if (oldVal && inputVal && operand) {
+    oldVal = operate(oldVal, operand, inputVal);
+    input.value = oldVal;
+  }
 });
