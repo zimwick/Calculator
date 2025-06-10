@@ -34,7 +34,21 @@ const operate = function (val1, operand, val2) {
   }
 };
 
-let newVal = "";
+const handleChain = function (newOperand) {
+  if (oldVal && inputVal) {
+    oldVal = operate(oldVal, operand, inputVal);
+    input.value = oldVal;
+    inputVal = "";
+    operand = newOperand;
+  } else {
+    oldVal = inputVal;
+    inputVal = "";
+    operand = newOperand;
+    input.value = "";
+  }
+};
+
+let inputVal = "";
 let oldVal = "";
 let operand = "";
 
@@ -58,64 +72,74 @@ const btnAdd = document.getElementById("+");
 const btnEquals = document.querySelector(".equals-btn");
 
 btn7.addEventListener("click", () => {
-  newVal += String(7);
-  input.value = newVal;
+  inputVal += String(7);
+  input.value = inputVal;
 });
 btn8.addEventListener("click", () => {
-  newVal += String(8);
-  input.value = newVal;
+  inputVal += String(8);
+  input.value = inputVal;
 });
 btn9.addEventListener("click", () => {
-  newVal += String(9);
-  input.value = newVal;
+  inputVal += String(9);
+  input.value = inputVal;
 });
 btn4.addEventListener("click", () => {
-  newVal += String(4);
-  input.value = newVal;
+  inputVal += String(4);
+  input.value = inputVal;
 });
 btn5.addEventListener("click", () => {
-  newVal += String(5);
-  input.value = newVal;
+  inputVal += String(5);
+  input.value = inputVal;
 });
 btn6.addEventListener("click", () => {
-  newVal += String(6);
-  input.value = newVal;
+  inputVal += String(6);
+  input.value = inputVal;
 });
 btn1.addEventListener("click", () => {
-  newVal += String(1);
-  input.value = newVal;
+  inputVal += String(1);
+  input.value = inputVal;
 });
 btn2.addEventListener("click", () => {
-  newVal += String(2);
-  input.value = newVal;
+  inputVal += String(2);
+  input.value = inputVal;
 });
 btn3.addEventListener("click", () => {
-  newVal += String(3);
-  input.value = newVal;
+  inputVal += String(3);
+  input.value = inputVal;
 });
 btn0.addEventListener("click", () => {
   //keep from starting with 0
-  if (newVal != 0) {
-    newVal += String(0);
-    input.value = newVal;
+  if (inputVal != "0") {
+    inputVal += String(0);
+    input.value = inputVal;
   }
 });
 btnDecimal.addEventListener("click", () => {
-  if (newVal == "") {
-    newVal += "0.";
-    input.value = newVal;
-  } else if (!newVal.includes(".")) {
-    newVal += ".";
-    input.value = newVal;
+  if (inputVal == "") {
+    inputVal += "0.";
+    input.value = inputVal;
+  } else if (!inputVal.includes(".")) {
+    inputVal += ".";
+    input.value = inputVal;
   }
 });
 
-btnDivide.addEventListener("click", () => {});
+btnDivide.addEventListener("click", () => {
+  handleChain("/");
+});
 
-btnAdd.addEventListener("click", () => {});
+btnAdd.addEventListener("click", () => {
+  handleChain("+");
+});
 
-btnMultiply.addEventListener("click", () => {});
+btnMultiply.addEventListener("click", () => {
+  handleChain("*");
+});
 
-btnSubtract.addEventListener("click", () => {});
+btnSubtract.addEventListener("click", () => {
+  handleChain("-");
+});
 
-btnEquals.addEventListener("click", () => {});
+btnEquals.addEventListener("click", () => {
+  input.value = operate(oldVal, operand, inputVal);
+});
