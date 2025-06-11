@@ -3,9 +3,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: "DSEG7Classic";
+  src: url("./fonts/digital-7 mono.ttf") format("truetype");
+}
+
 h1 {
   text-align: center;
   margin: 25px 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 58px;
 }
 
 body {
@@ -18,11 +26,12 @@ main {
 
 #in-value {
   width: 100%;
-  font-size: 42px;
+  font-size: 50px;
   text-align: right;
   padding: 8px;
   caret-color: transparent;
   background-color: #ffafcc;
+  font-family: "DSEG7Classic", monospace;
 }
 #in-value:focus {
   outline: none;
@@ -39,6 +48,7 @@ main {
   padding: 16px;
   border-radius: 16px;
   background-color: #ffc8dd;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .invisible {
@@ -70,4 +80,10 @@ button {
   border-radius: 50%;
   background-color: #cdb4db;
   font-size: 17px;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.075);
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #b8a2c5;
 }
