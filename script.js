@@ -81,6 +81,7 @@ const btn0 = document.getElementById("0");
 const btnDecimal = document.getElementById(".");
 const btnAdd = document.getElementById("+");
 const btnEquals = document.querySelector(".equals");
+const btnDelete = document.getElementById("del");
 
 btn7.addEventListener("click", () => {
   inputVal += String(7);
@@ -139,6 +140,15 @@ btnClear.addEventListener("click", () => {
   oldVal = "";
   operand = "";
   input.value = "";
+});
+btnDelete.addEventListener("click", () => {
+  if (inputVal) {
+    console.log(inputVal);
+    inputVal = inputVal.split("");
+    inputVal.pop();
+    inputVal = inputVal.join("");
+    input.value = inputVal;
+  }
 });
 
 btnDivide.addEventListener("click", () => {
